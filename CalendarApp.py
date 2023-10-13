@@ -1,34 +1,51 @@
-from datetime import datetime, date
-from enum import Enum, IntEnum
+from datetime import *
+import PySimpleGUI as sg
+#from enum import Enum, IntEnum
 
 #class CalendarApp:
 
+month_list = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 
-class Months (IntEnum):
-    January = 1
-    February = 2
-    March = 3
-    April = 4
-    May = 5
-    June = 6
-    July = 7
-    August = 8
-    September = 9
-    Ocober = 10
-    November = 11
-    December = 12
-
-class Day(IntEnum):
-    MONDAY = 0
-    TUESDAY = 1
-    WEDNESDAY = 2
-    THURSDAY = 3
-    FRIDAY = 4
-    SATURDAY = 5
-    SUNDAY = 6
-
-mdays = [0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+'''
+def isleap(year):
+    """Return True for leap years, False for non-leap years."""
+    return year % 4 == 0 and (year % 100 != 0 or year % 400 == 0)
 
 
-date1 =datetime.now().ctime()
+def leapdays(y1, y2):
+    """Return number of leap years in range [y1, y2).
+       Assume y1 <= y2."""
+    y1 -= 1
+    y2 -= 1
+    return (y2//4 - y1//4) - (y2//100 - y1//100) + (y2//400 - y1//400)
+'''
+
+'''
+date1 = datetime.now().ctime()
 print(date1)
+
+month = datetime.now().month
+print (month) 
+
+#for i in range :
+
+for i in range (1,len(month_list)):
+    if month == month_list[i]:
+        month_name = datetime.strptime(str(month), '%m').strftime('%b')
+        print (month_name)
+
+year = datetime.now().year
+print (year)'''
+
+
+# Get the current datetime as a string
+current_datetime_string = str(datetime.now())
+
+# Parse the string into a datetime object
+parsed_datetime = datetime.strptime(current_datetime_string, '%Y-%m-%d %H:%M:%S.%f').strftime('%a %d %b %Y, %I:%M%p')
+
+print(parsed_datetime)
+
+#import PySimpleGUI as sg
+
+sg.Window(title="Hello World", layout=[[]], margins=(100, 50)).read()
