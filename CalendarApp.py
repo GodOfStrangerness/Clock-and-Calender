@@ -1,6 +1,6 @@
 from datetime import *
 import time
-#import PySimpleGUI as sg
+import PySimpleGUI as sg
 #from enum import Enum, IntEnum
 
 #class CalendarApp:
@@ -44,12 +44,9 @@ print (year)'''
 
 # Parse the string into a datetime object
 a = 0
+sg.Window(title="Hello World", layout=[[]], margins=(100, 50)).read()
 while True:
     current_datetime_string = str(datetime.now())
     parsed_datetime = datetime.strptime(current_datetime_string, '%Y-%m-%d %H:%M:%S.%f').strftime('%a %d %b %Y, %I:%M:%S%p')
     print(parsed_datetime)
     time.sleep(1)
-
-#import PySimpleGUI as sg
-
-#sg.Window(title="Hello World", layout=[[]], margins=(100, 50)).read()
