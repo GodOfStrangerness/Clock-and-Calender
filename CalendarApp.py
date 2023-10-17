@@ -43,10 +43,27 @@ print (year)'''
 #current_datetime_string = str(datetime.now())
 
 # Parse the string into a datetime object
-a = 0
-sg.Window(title="Hello World", layout=[[]], margins=(100, 50)).read()
+def datetime_func(i):
+    while True:
+        current_datetime_string = str(i)
+        parsed_datetime = i.strptime(current_datetime_string, '%Y-%m-%d %H:%M:%S.%f').strftime('%a %d %b %Y, %I:%M:%S%p')
+        print(parsed_datetime)
+        time.sleep(1)
+        return i
+
+num = datetime_func(datetime.now())
+window = sg.Window(title="Hello World", layout=[[]], margins=(100, 50)).read()
+
 while True:
-    current_datetime_string = str(datetime.now())
-    parsed_datetime = datetime.strptime(current_datetime_string, '%Y-%m-%d %H:%M:%S.%f').strftime('%a %d %b %Y, %I:%M:%S%p')
-    print(parsed_datetime)
-    time.sleep(1)
+
+    event, values = window.read()
+
+    if event == sg.WIN_CLOSED:
+        break
+    elif event == "hi":
+        num += 1
+        window['xxx'].update(num)
+
+window.close()
+
+
