@@ -48,21 +48,22 @@ def datetime_func(i):
         current_datetime_string = str(i)
         parsed_datetime = i.strptime(current_datetime_string, '%Y-%m-%d %H:%M:%S.%f').strftime('%a %d %b %Y, %I:%M:%S%p')
         print(parsed_datetime)
-        time.sleep(1)
         return i
 
+
 num = datetime_func(datetime.now())
-window = sg.Window(title="Hello World", layout=[[]], margins=(100, 50)).read()
+layout = [[sg.Text(num, key = 'xxx')]]
+
+window = sg.Window(title="Hello World",layout=layout)
+
 
 while True:
 
     event, values = window.read()
+    window['xxx'].update(num)
 
     if event == sg.WIN_CLOSED:
         break
-    elif event == "hi":
-        num += 1
-        window['xxx'].update(num)
 
 window.close()
 
