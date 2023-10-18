@@ -55,7 +55,7 @@ def datetime_func(i):
 
 # Erstelle das GUI-Fenster
 layout = [[sg.Text('', key='xxx')]]
-window = sg.Window(title="Hello World", layout=layout, finalize=True)
+window = sg.Window(title="Clock", layout=layout, finalize=True)
 
 kms = True
 
@@ -64,7 +64,7 @@ while kms:
     window['xxx'].update(num)  # Aktualisiere das Text-Element im GUI
     sleep(1)
 
-    event, values = window.read(timeout=100)  # Verarbeitung von GUI-Ereignissen
+    event, values = window.read(timeout=10)  # Verarbeitung von GUI-Ereignissen
 
     if event == sg.WIN_CLOSED:
         break
