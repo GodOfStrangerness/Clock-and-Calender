@@ -1,5 +1,5 @@
 from datetime import *
-import time
+from time import *
 import PySimpleGUI as sg
 #from enum import Enum, IntEnum
 
@@ -43,28 +43,56 @@ print (year)'''
 #current_datetime_string = str(datetime.now())
 
 # Parse the string into a datetime object
+import PySimpleGUI as sg
+from datetime import datetime
+from time import sleep
+
+# Funktion zur Formatierung der DateTime-Variable
 def datetime_func(i):
-    while True:
-        current_datetime_string = str(i)
-        parsed_datetime = i.strptime(current_datetime_string, '%Y-%m-%d %H:%M:%S.%f').strftime('%a %d %b %Y, %I:%M:%S%p')
-        print(parsed_datetime)
-        return i
+    current_datetime_string = str(i)
+    parsed_datetime = datetime.strptime(current_datetime_string, '%Y-%m-%d %H:%M:%S.%f').strftime('%a %d %b %Y, %I:%M:%S%p')
+    return parsed_datetime
 
+# Erstelle das GUI-Fenster
+layout = [[sg.Text('', key='xxx')]]
+window = sg.Window(title="Hello World", layout=layout, finalize=True)
 
-num = datetime_func(datetime.now())
-layout = [[sg.Text(num, key = 'xxx')]]
+kms = True
 
-window = sg.Window(title="Hello World",layout=layout)
+while kms:
+    num = datetime_func(datetime.now())
+    window['xxx'].update(num)  # Aktualisiere das Text-Element im GUI
+    sleep(1)
 
-
-while True:
-
-    event, values = window.read()
-    window['xxx'].update(num)
+    event, values = window.read(timeout=100)  # Verarbeitung von GUI-Ereignissen
 
     if event == sg.WIN_CLOSED:
         break
 
 window.close()
+
+
+'''
+while True:
+    global num
+    kms = True
+    def datetime_func(i):
+        current_datetime_string = str(i)
+        parsed_datetime = i.strptime(current_datetime_string, '%Y-%m-%d %H:%M:%S.%f').strftime('%a %d %b %Y, %I:%M:%S%p')
+        #print(parsed_datetime)
+        return parsed_datetime
+    while kms == True:
+        num = datetime_func(datetime.now())
+        sleep(1)
+        
+    print (num)
+    layout = [[sg.Text(num, key = 'xxx')]]
+    window = sg.Window(title="Hello World",layout=layout)
+    event, values = window.read()
+
+    if event == sg.WIN_CLOSED:
+        break
+
+window.close()'''
 
 
