@@ -3,9 +3,9 @@ from time import *
 import PySimpleGUI as sg
 #from enum import Enum, IntEnum
 
-#class CalendarApp:
+class Clock:
 
-month_list = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+    monthlist = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 
 '''
 def isleap(year):
